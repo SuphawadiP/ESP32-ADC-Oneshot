@@ -30,7 +30,7 @@ void app_main(void)
         .bitwidth = ADC_BITWIDTH_DEFAULT,
         .atten = ADC_ATTEN_DB_12,
     };
-    ESP_ERROR_CHECK(adc_oneshot_config_channel(handle, ADC_CHANNEL_0, &config));
+    ESP_ERROR_CHECK(adc_oneshot_config_channel(handle, ADC_CHANNEL_4, &config));
 
     //3. calibrate adc
     adc_cali_handle_t cali_handle = NULL;
@@ -43,8 +43,8 @@ void app_main(void)
 
     while (1)
     {
-        ESP_ERROR_CHECK(adc_oneshot_read(handle, ADC_CHANNEL_0, &adc_read0));
-        printf("Adc channel-0 raw read result %d \n", adc_read0);
+        ESP_ERROR_CHECK(adc_oneshot_read(handle, ADC_CHANNEL_4, &adc_read0));
+        printf("Adc channel-4 raw read result %d \n", adc_read0);
         printf("\n\n");
         adc_cali_raw_to_voltage(cali_handle, adc_read0, &mv_output);
         printf("ADC millivolt output %d \n",mv_output);
